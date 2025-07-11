@@ -1,103 +1,121 @@
 # 🏰 CS50 AI: Knights
 
-This is my implementation of **Project 1: Knights** from [Harvard’s CS50 Introduction to Artificial Intelligence with Python](https://cs50.harvard.edu/ai/). The project focuses on **logical inference** in a puzzle-like environment where a character deduces where knights are hidden on a grid.
+Solve logic puzzles using **propositional logic** and **model checking** in Python.
 
-## 🧠 Project Overview
+## 📚 Overview
 
-In this logic puzzle, a character moves across a 2D grid where some cells contain hidden knights. The goal is to determine, using **propositional logic**, which cells contain knights and which are safe, based on a set of clues.
+This project is inspired by Raymond Smullyan’s *Knights and Knaves* logic puzzles. In these puzzles, each character is either:
 
-The project implements:
+* **Knight** (always tells the truth), or
+* **Knave** (always lies)
 
-* **Modeling knowledge** in propositional logic
-* **Constructing logical sentences** using symbols and operators
-* **Applying inference** with a model-checking algorithm to solve the puzzle
-
-## 🧩 Key Concepts
-
-* **Knowledge Base (KB)**: A collection of logical sentences about the game state
-* **Symbols**: Propositional variables (e.g., `Knight(A, B)`)
-* **Inference**: Using the KB to determine if a symbol must be true/false
-* **Model Checking**: An exhaustive approach to test logical entailment
+Your goal is to write an AI that can determine, using logical inference, who is a knight and who is a knave based on what the characters say.
 
 ---
 
-## 🛠️ Features
-
-* Build a logical model of the game grid
-* Deduce the locations of knights using logical inference
-* Identify safe moves and knight locations with certainty
-* Visual terminal-based grid output for puzzle state
-
----
-
-## 📂 File Structure
+## 🛠️ Files Included
 
 ```
 knights/
-├── puzzle.py        # Logic for generating and displaying the puzzle
-├── logic.py         # Logic for knowledge representation and model checking
-├── runner.py        # Runs the puzzle and applies the AI logic
-├── README.md        # This file
+├── logic.py      # Core logic engine (do not modify)
+├── puzzle.py     # Where you build the knowledge bases
+├── README.md     # This file
 ```
 
 ---
 
-## 🚀 How to Run
+## 💡 Objective
 
-1. **Install Python 3** if not already installed.
+Complete the knowledge bases `knowledge0`, `knowledge1`, `knowledge2`, and `knowledge3` in `puzzle.py`, so that your AI can automatically solve the given logical puzzles using **model checking**.
 
-2. **Clone the repository**:
+---
+
+## 🧩 The Puzzles
+
+### Puzzle 0
+
+A says: “I am both a knight and a knave.”
+
+### Puzzle 1
+
+A says: “We are both knaves.”
+B says nothing.
+
+### Puzzle 2
+
+A says: “We are the same kind.”
+B says: “We are of different kinds.”
+
+### Puzzle 3
+
+A says either “I am a knight.” or “I am a knave.” (you don’t know which).
+B says: “A said ‘I am a knave.’”
+B also says: “C is a knave.”
+C says: “A is a knight.”
+
+---
+
+## ⚙️ How to Run
+
+Make sure you have **Python 3.12** installed.
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/knights-project.git
-cd knights-project
+python puzzle.py
 ```
 
-3. **Run the game AI**:
+You’ll see the AI’s deductions about each puzzle printed to the console.
+
+---
+
+## 🧠 Key Concepts Used
+
+* **Propositional Logic**
+* **Logical Connectives**: `And`, `Or`, `Not`, `Implication`, `Biconditional`
+* **Model Checking**: Testing all possible truth assignments
+* **Knowledge Bases**: Logical representation of facts and statements
+
+---
+
+## 🧪 Example Output
 
 ```bash
-python runner.py
-```
+Puzzle 0
+    A is a Knave
 
-You’ll see a grid where the AI deduces the safe and knight-containing cells.
+Puzzle 1
+    B is a Knight
 
----
+Puzzle 2
+    A is a Knave
+    B is a Knight
 
-## 🧪 Sample Output
-
-```
-Puzzle:
-. 2 .
-. . .
-. . .
-
-AI's knowledge:
-Safe moves: (1, 2), (2, 0)
-Knights: (0, 1)
+Puzzle 3
+    A is a Knight
+    C is a Knight
 ```
 
 ---
 
-## 📖 What I Learned
 
-* How to represent real-world logic problems using propositional logic
-* How model checking works in AI
-* The importance of **knowledge representation** and **deductive reasoning**
-* Foundations of logical inference systems used in modern AI applications
+## 💭 Hints
+
+* Remember: Knights always tell the truth, Knaves always lie.
+* Use propositional symbols like `AKnight`, `AKnave`, etc.
+* Use logical constructs (`And`, `Or`, `Implication`) to build the puzzle rules.
+* Don’t manually hard-code answers — let the AI deduce them from logic.
 
 ---
 
-## 🧠 Related Topics
+## 🎓 What You Learn
 
-* Propositional Logic
-* Knowledge-Based Agents
-* Inference Engines
-* Search vs Logic in AI
+* How to represent knowledge with logic
+* How inference engines work
+* Foundation for more advanced AI concepts (e.g. constraint satisfaction, logic programming)
 
 ---
 
 ## 📚 Resources
 
 * [CS50 AI Course](https://cs50.harvard.edu/ai/)
-* [Python Docs](https://docs.python.org/3/)
-* [Logic and Inference](https://en.wikipedia.org/wiki/Inference)
+* [Raymond Smullyan’s Puzzles](https://en.wikipedia.org/wiki/Knights_and_Knaves)
+* [Propositional Logic (Wikipedia)](https://en.wikipedia.org/wiki/Propositional_calculus)
